@@ -1,0 +1,8 @@
+.idea/*
+
+*.class
+
+*.jar
+
+*.properties
+*.xml
