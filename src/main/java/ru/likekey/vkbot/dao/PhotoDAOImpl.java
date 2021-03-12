@@ -3,8 +3,10 @@ package ru.likekey.vkbot.dao;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
+import ru.likekey.vkbot.entity.Payment;
 import ru.likekey.vkbot.entity.Photo;
 import ru.likekey.vkbot.entity.User;
+import ru.likekey.vkbot.entity.Video;
 
 import java.util.List;
 
@@ -17,7 +19,9 @@ public class PhotoDAOImpl implements PhotoDAO {
             sessionFactory = new Configuration()
                     .configure("hibernate.cfg.xml")
                     .addAnnotatedClass(User.class)
+                    .addAnnotatedClass(Payment.class)
                     .addAnnotatedClass(Photo.class)
+                    .addAnnotatedClass(Video.class)
                     .buildSessionFactory();
         }
     }

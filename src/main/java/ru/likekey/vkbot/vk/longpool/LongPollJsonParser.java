@@ -5,6 +5,7 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import com.vk.api.sdk.exceptions.ApiException;
 import com.vk.api.sdk.exceptions.ClientException;
+import ru.likekey.vkbot.vk.MessageHandler;
 
 import java.io.IOException;
 import java.text.SimpleDateFormat;
@@ -33,14 +34,22 @@ public class LongPollJsonParser {
                 Float start = getTime();
                 json = json.getAsJsonArray("updates").get(0).getAsJsonObject();
                 json = json.getAsJsonObject("object");
-
-                System.out.println("Пришло сообщение: " + json.get("body").getAsString());
+                System.out.println("Залезаем в MessageHandler");
+                System.out.println(json.toString());
+                MessageHandler.parseMessage(new MessageFromJson(
+                        json.get("id").getAsInt(),
+                        json.get("user_id").getAsInt(),
+                        json.get("body").getAsString()
+                ));
 
                 float time = getTime() - start;
                 if (time < 0.00001) System.err.println("Сообщение обработано за: < 0.00001 сек.");
                 else { System.err.println("Сообщение обработано за: " + time + " сек."); }
             } catch (IndexOutOfBoundsException e) {
-            } catch (NullPointerException e) { }
+                System.out.println(e);
+            } catch (NullPointerException e) {
+                System.out.println(e);
+            }
             longPollInfo.longPollUpdate();
         }
     }
