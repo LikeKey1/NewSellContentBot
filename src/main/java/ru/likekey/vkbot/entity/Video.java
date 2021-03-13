@@ -32,7 +32,7 @@ public class Video {
     private String description;
 
     @Column(name = "duration")
-    private int duration;
+    private String duration;
 
     @ManyToMany(cascade = CascadeType.MERGE)
     @JoinTable(name = "user_video",
@@ -43,7 +43,7 @@ public class Video {
     public Video() {
     }
 
-    public Video(String path, String path2, String path3, String pathReady, int price, String description, int duration) {
+    public Video(String path, String path2, String path3, String pathReady, int price, String description, String duration) {
         this.path = path;
         this.path2 = path2;
         this.path3 = path3;
@@ -116,11 +116,11 @@ public class Video {
         this.description = description;
     }
 
-    public int getDuration() {
+    public String getDuration() {
         return duration;
     }
 
-    public void setDuration(int duration) {
+    public void setDuration(String duration) {
         this.duration = duration;
     }
 

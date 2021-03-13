@@ -2,7 +2,7 @@ package ru.likekey.vkbot;
 
 import com.vk.api.sdk.exceptions.ApiException;
 import com.vk.api.sdk.exceptions.ClientException;
-import ru.likekey.vkbot.vk.longpool.LongPollJsonParser;
+import ru.likekey.vkbot.vk.longpoll.LongPollJsonParser;
 
 import java.io.IOException;
 

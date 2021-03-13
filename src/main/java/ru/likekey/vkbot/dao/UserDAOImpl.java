@@ -1,5 +1,6 @@
 package ru.likekey.vkbot.dao;
 
+import org.hibernate.Hibernate;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
@@ -49,23 +50,29 @@ public class UserDAOImpl implements UserDAO {
     }
 
     @Override
-    public User getUser(int vkId) {
+    public User getUser(int vkId, boolean withFullInit) {
         Session session = sessionFactory.getCurrentSession();
-        List<User> user;
+        List<User> users;
+        User user;
         try {
             session.beginTransaction();
             String query = "from User where vkId = " + vkId;
-            user = session.createQuery(query).getResultList();
+            users = session.createQuery(query).getResultList();
+            if (users.isEmpty()) return null;
+            user = users.get(0);
+            if (withFullInit) {
+                Hibernate.initialize(user.getPhotos());
+                Hibernate.initialize(user.getVideos());
+            }
         } finally {
             session.getTransaction().commit();
         }
-        if (user.size() == 0) return null;
-        return user.get(0);
+        return user;
     }
 
     @Override
     public void checkUserInDB(int vkId) {
-        User user = getUser(vkId);
+        User user = getUser(vkId, false);
         if (user == null) {
             User newUser = new User(vkId, 5, "MAIN");
             Payment payment = new Payment();

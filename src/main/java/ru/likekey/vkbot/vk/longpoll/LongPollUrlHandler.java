@@ -1,4 +1,4 @@
-package ru.likekey.vkbot.vk.longpool;
+package ru.likekey.vkbot.vk.longpoll;
 
 import com.vk.api.sdk.exceptions.ApiException;
 import com.vk.api.sdk.exceptions.ClientException;
@@ -7,7 +7,6 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
 import java.net.URL;
 
 public class LongPollUrlHandler {

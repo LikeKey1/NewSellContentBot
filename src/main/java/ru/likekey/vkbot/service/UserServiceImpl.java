@@ -28,8 +28,8 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public User getUser(int vkId) {
-        return userDAO.getUser(vkId);
+    public User getUser(int vkId, boolean withFullInit) {
+        return userDAO.getUser(vkId, withFullInit);
     }
 
     @Override

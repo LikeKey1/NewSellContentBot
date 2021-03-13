@@ -11,7 +11,7 @@ public interface UserService {
     // UserDAO
     public void saveUser(User user);
     public void updateUser(User user);
-    public User getUser(int vkId);
+    public User getUser(int vkId, boolean withFullInit);
     public void checkUserInDB(int vkId);
 
     // PhotoDAO

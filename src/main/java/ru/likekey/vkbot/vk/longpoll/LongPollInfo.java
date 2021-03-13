@@ -1,4 +1,4 @@
-package ru.likekey.vkbot.vk.longpool;
+package ru.likekey.vkbot.vk.longpoll;
 
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.GroupActor;

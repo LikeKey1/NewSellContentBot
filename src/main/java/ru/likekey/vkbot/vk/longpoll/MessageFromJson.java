@@ -1,4 +1,4 @@
-package ru.likekey.vkbot.vk.longpool;
+package ru.likekey.vkbot.vk.longpoll;
 
 public class MessageFromJson {
 
